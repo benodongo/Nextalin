@@ -1,0 +1,356 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- page-title -->
+<div class="ttm-page-title-row ttm-bg ttm-bgimage-yes ttm-bgcolor-dark clearfix">
+    <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="ttm-page-title-row-inner">
+                    <div class="page-title-heading">
+                        <h2 class="title">Contact Us</h2>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="{% url 'home' %}">
+                                <i class="fas fa-home"></i> &nbsp;
+                                Home</a>
+                        </span>
+                        <span>Contact Us</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-title end -->
+
+<!--site-main start-->
+<div class="site-main">
+    <!--contact-info-section-->
+    <section class="ttm-row contact-info-section clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="featured-icon-box icon-align-top-content style8">
+                        <div class="featured-icon">
+                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                <i class="flaticon flaticon-live-chat"></i>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>General Inquiries</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>For any questions about our services or company information</p>
+                            </div>
+                        </div>
+                        <a class="ttm-btn btn-inline ttm-btn-size-md ttm-icon-btn-right ttm-textcolor-darkgreycolor" href="mailto:info@nextalin.com">Email Us
+                            <i class="fas fa-long-arrow-alt-right ttm-textcolor-skincolor"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="featured-icon-box icon-align-top-content style8">
+                        <div class="featured-icon">
+                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                <i class="flaticon flaticon-interview"></i>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>Career Opportunities</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>Join our team of talented professionals in the construction industry</p>
+                            </div>
+                        </div>
+                        <a class="ttm-btn btn-inline ttm-btn-size-md ttm-icon-btn-right ttm-textcolor-darkgreycolor" href="{% url 'careers' %}">View Careers<i class="fas fa-long-arrow-alt-right ttm-textcolor-skincolor"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="featured-icon-box icon-align-top-content style8">
+                        <div class="featured-icon">
+                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                <i class="flaticon flaticon-chat"></i>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>Project Inquiries</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>Get a quote or discuss your upcoming construction project</p>
+                            </div>
+                        </div>
+                        <a class="ttm-btn btn-inline ttm-btn-size-md ttm-icon-btn-right ttm-textcolor-darkgreycolor" href="#contact-form">Get a Quote<i class="fas fa-long-arrow-alt-right ttm-textcolor-skincolor"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--contact-info-section-end-->
+
+    <!--form-section-->
+    <section class="ttm-row form-section ttm-bgcolor-grey clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--section-title-->
+                    <div class="section-title title-style-center_text margin_bottom30">
+                        <div class="title-header">
+                            <h3>GET IN TOUCH</h3>
+                            <h2 class="title">Have Questions? <span>Contact Us Today!</span></h2>
+                        </div>
+                        <div class="title-desc">
+                            <p>We're here to help with any questions about our services, projects, or career opportunities.</p>
+                        </div>
+                    </div>
+                    <!--section-title-end-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="ttm-bgcolor-white p-40 res-991-margin_right0">
+                        <form id="contact_form" class="wrap-form contact_form padding_top15" method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+                            
+                            {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong> Please correct the following:
+                                <ul>
+                                    {% for field, errors in form.errors.items %}
+                                        {% for error in errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                            
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            
+                            <div class="row ttm-boxes-spacing-30px">
+                                <div class="col-sm-6 ttm-box-col-wrapper">
+                                    <label>
+                                        <span class="text-input margin_bottom0">
+                                            {{ form.name }}
+                                            {% if form.name.errors %}
+                                                <span class="text-danger">{{ form.name.errors }}</span>
+                                            {% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-6 ttm-box-col-wrapper">
+                                    <label>
+                                        <span class="text-input margin_bottom0">
+                                            {{ form.phone }}
+                                            {% if form.phone.errors %}
+                                                <span class="text-danger">{{ form.phone.errors }}</span>
+                                            {% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-6 ttm-box-col-wrapper">
+                                    <label>
+                                        <span class="text-input margin_bottom0">
+                                            {{ form.email }}
+                                            {% if form.email.errors %}
+                                                <span class="text-danger">{{ form.email.errors }}</span>
+                                            {% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-6 ttm-box-col-wrapper">
+                                    <label>
+                                        <span class="text-input margin_bottom0">
+                                            {{ form.subject }}
+                                            {% if form.subject.errors %}
+                                                <span class="text-danger">{{ form.subject.errors }}</span>
+                                            {% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 ttm-box-col-wrapper">
+                                    <label>
+                                        <span class="text-input margin_bottom0">
+                                            {{ form.message }}
+                                            {% if form.message.errors %}
+                                                <span class="text-danger">{{ form.message.errors }}</span>
+                                            {% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-skincolor w-100" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ttm-bgcolor-white p-40 res-991-margin_top30">
+                        <div class="featured-icon-box icon-align-top-content margin_bottom20">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                    <i class="flaticon flaticon-location-1"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content pt-2">
+                                <div class="featured-title">
+                                    <h3 class="margin_bottom0">Our Offices</h3>
+                                </div>
+                                <div class="featured-desc">
+                                    <p><strong>Western Region Office:</strong><br>
+                                    Nextalin Enterprises Ltd<br>
+                                    P.O. Box 256- 40100<br>
+                                    Kisumu, Kenya</p>
+                                    
+                                    <p class="mt-3"><strong>Nairobi Office:</strong><br>
+                                    Applewood Plaza<br>
+                                    Along Ngong Road,<br>
+                                    Kilimani, Nairobi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-icon-box icon-align-top-content margin_bottom20">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                    <i class="flaticon flaticon-call-1"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content pt-2">
+                                <div class="featured-title">
+                                    <h3 class="margin_bottom0">Call Us</h3>
+                                </div>
+                                <div class="featured-desc">
+                                    <p>+254 707 782 910</p>
+                                    <p>+254 706 170 051</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-icon-box icon-align-top-content margin_bottom20">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                    <i class="flaticon flaticon-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content pt-2">
+                                <div class="featured-title">
+                                    <h3 class="margin_bottom0">Email Us</h3>
+                                </div>
+                                <div class="featured-desc">
+                                    <p>info@nextalin.com</p>
+                                    <p>careers@nextalin.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-icon-box icon-align-top-content margin_bottom20">
+                            <div class="featured-icon">
+                                <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                            <div class="featured-content pt-2">
+                                <div class="featured-title">
+                                    <h3 class="margin_bottom0">Working Hours</h3>
+                                </div>
+                                <div class="featured-desc">
+                                    <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                                    <p>Saturday: 9:00 AM - 1:00 PM</p>
+                                    <p>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--form-section-end-->
+
+    <!--map-section-->
+    <section class="ttm-row padding-zero-section mt_100 res-991-margin_top40 res-991-margin_bottom40 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="featured-icon-box icon-align-before-content style9">
+                        <div class="featured-icon">
+                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                <i class="flaticon flaticon-location-1"></i>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>Nairobi Office</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>Applewood Plaza<br>
+                                Along Ngong Road<br>
+                                Kilimani, Nairobi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="featured-icon-box icon-align-before-content style9 active">
+                        <div class="featured-icon">
+                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                <i class="flaticon flaticon-call-1"></i>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>Call us on</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>+254 707 782 910<br>
+                                +254 706 170 051</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="featured-icon-box icon-align-before-content style9">
+                        <div class="featured-icon">
+                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                <i class="flaticon flaticon-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>Email Us On</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>info@nextalin.com<br>
+                                careers@nextalin.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--map-section-end-->
+    
+    <!-- Google Map -->
+    <div id="google_map" class="google_map mt_90 res-991-margin_top0">
+        <div class="map_container clearfix">
+            <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.808530553153!2d36.77521431475397!3d-1.292385835980803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a6f74939f1f%3A0x9d5e6b7e1a8f7e1d!2sNgong%20Road%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1623345678901!5m2!1sen!2ske" height="550" style="border:0; width:100%;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!--site-main end-->
+{% endblock %}

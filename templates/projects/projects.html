@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+       <!-- page-title -->
+        <div class="ttm-page-title-row ttm-bg ttm-bgimage-yes ttm-bgcolor-dark clearfix">
+            <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="ttm-page-title-row-inner">
+                            <div class="page-title-heading">
+                                <h2 class="title">Our Projects</h2>
+                            </div>
+                            <div class="breadcrumb-wrapper">
+                                <span>
+                                    <a title="Homepage" href="index.html">
+                                        <i class="fas fa-home"></i> &nbsp;
+                                        Home</a>
+                                </span>
+                                <span>Our Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page-title end -->
+        <!--site-main start-->
+        <div class="site-main">
+            <!--grid-section-->
+            <div class="ttm-row grid-section clearfix">
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        {% for project in projects %}
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <!-- featured-imagebox-portfolio -->
+                            <div class="featured-imagebox featured-imagebox-portfolio style1">
+                                <!-- ttm-box-view-overlay -->
+                                <div class="ttm-box-view-overlay ttm-portfolio-box-view-overlay">
+                                    <!-- featured-thumbnail -->
+                                    <div class="featured-thumbnail">
+                                        <a href="{{ project.get_absolute_url }}"> 
+                                            <img class="img-fluid" src="{{ project.image.url }}" alt="{{ project.title }}">
+                                        </a>
+                                    </div><!-- featured-thumbnail end-->
+                                    <div class="ttm-media-link">
+                                        <a href="{{ project.get_absolute_url }}" class="ttm_link"><i class="fas fa-plus"></i></a>
+                                    </div>
+                                </div><!-- ttm-box-view-overlay end-->
+                                <div class="featured-content featured-content-portfolio">
+                                    <div class="featured-title">
+                                        <h3><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h3>
+                                    </div>
+                                    <span class="category">
+                                        <span>{{ project.service_type }}</span>
+                                    </span>
+                                </div>
+                            </div><!-- featured-imagebox-portfolio -->
+                        </div>
+                        {% endfor %}
+                    </div><!-- row end -->
+                </div>
+            </div>
+            <!--grid-section end-->
+            <!--financial-strategies-section -->
+            <section class="ttm-row financial-section ttm-bgcolor-grey clearfix">
+                <div class="container">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <h3>We Offer Professional Services & Superior Quality</h3>
+                            <div class="margin_top30">
+                                <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-skincolor padding_top15 padding_bottom15" href="contact-us.html">Get A Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--financial-strategies-section-End -->
+        </div>
+        <!--site-main end-->
+{% endblock %}

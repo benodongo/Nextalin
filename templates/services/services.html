@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- page-title -->
+<div class="ttm-page-title-row ttm-bg ttm-bgimage-yes ttm-bgcolor-dark clearfix">
+    <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="ttm-page-title-row-inner">
+                    <div class="page-title-heading">
+                        <h2 class="title">Our Services</h2>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="{% url 'home' %}">
+                                <i class="fas fa-home"></i> &nbsp;
+                                Home</a>
+                        </span>
+                        <span>Services</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-title end -->
+
+<!--site-main start-->
+<div class="site-main">
+    <!-- about-section -->
+    <section class="ttm-row clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <div class="title-header">
+                            <h3>OUR SERVICES</h3>
+                            <h2 class="title">Building Your Vision Into Reality</h2>
+                        </div>
+                        <div class="title-desc">
+                            <p>Nextalin Enterprises is Kenya's premier youth-owned construction company specializing in civil engineering, construction, design, and supplies. We're committed to producing excellent, high-quality services that meet the region's sustained demand.</p>
+                        </div>
+                    </div>
+                    <ul class="ttm-list ttm-list-style-icon d-grid ttm-list-icon-color-skincolor padding_top10">
+                        <li><i class="far fa-arrow-alt-circle-right"></i><span class="ttm-list-li-content">Quality construction services with over-expectation results</span></li>
+                        <li><i class="far fa-arrow-alt-circle-right"></i><span class="ttm-list-li-content">Innovative solutions for complex construction challenges</span></li>
+                        <li><i class="far fa-arrow-alt-circle-right"></i><span class="ttm-list-li-content">Commitment to safety and accident-free projects</span></li>
+                        <li><i class="far fa-arrow-alt-circle-right"></i><span class="ttm-list-li-content">Sustainable and environmentally friendly practices</span></li>
+                        <li><i class="far fa-arrow-alt-circle-right"></i><span class="ttm-list-li-content">Accountability to clients, team, and community</span></li>
+                    </ul>
+                    <a class="ttm-btn btn-inline ttm-btn-size-md ttm-icon-btn-right ttm-textcolor-darkgreycolor margin_top20 res-991-margin_bottom30" href="{% url 'about' %}">Learn More<i class="fas fa-long-arrow-alt-right"></i></a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ttm_single_image-wrapper imagestyle-four">
+                        <img class="img-fluid auto_size" src="{% static 'images/services/civil-structure-01.jpg' %}" alt="Nextalin Construction Team">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--about-section-end-->
+
+    <!--service-section-->
+    <section class="ttm-row main-service-section clearfix">
+        <div class="container-fluid">
+            <div class="row ttm-bgcolor-grey padding_top100 res-991-padding_top40 padding_bottom160 res-991-padding_bottom0">
+                <div class="col-lg-12">
+                    <!--section-title -->
+                    <div class="section-title title-style-center_text">
+                        <div class="title-header">
+                            <h3>OUR EXPERTISE</h3>
+                            <h2 class="title">Comprehensive Construction Services</h2>
+                        </div>
+                        <div class="title-desc">
+                            <p>From groundbreaking infrastructure projects to breathtaking architectural designs, we offer a full range of construction services.</p>
+                        </div>
+                    </div>
+                    <!--section-title-end -->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt_160 res-1199-mt_150 res-991-margin_top50">
+                <div class="col-lg-12">
+                    <div class="row">
+                        {% for service in services %}
+                        <div class="col-lg-4 col-md-6 margin_bottom30">
+                            <!-- featured-imagebox-post -->
+                            <div class="featured-imagebox featured-imagebox-sevices style1">
+                                <div class="featured-thumbnail">
+                                    <a href="{% url 'service_detail' service.id %}" tabindex="-1">
+                                        <img class="img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
+                                    </a>
+                                    <div class="ttm-media-link">
+                                        <a href="{% url 'service_detail' service.id %}" tabindex="-1" class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-skincolor ttm-icon_element-size-md">
+                                            <i class="{{ service.icon }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="featured-content">
+                                    <div class="featured-title">
+                                        <h3><a href="{% url 'service_detail' service.id %}" tabindex="-1">{{ service.name }}</a></h3>
+                                    </div>
+                                    <div class="featured-desc">
+                                        {{ service.description|truncatewords:20 }}
+                                    </div>
+                                    <div class="ttm-details-link">
+                                        <a href="{% url 'service_detail' service.id %}" tabindex="-1" class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-darkgrey ttm-icon_element-size-xs">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- featured-imagebox-post end -->
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--service-section-end-->
+
+    <!--Our Approach-section-->
+    <section class="ttm-row approach-section ttm-bg bg-layer-equal-height clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="ttm-col-bgimage-yes ttm-bg col-bg-img-eight ttm-left-span">
+                                <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
+                                <div class="layer-content"> </div>
+                            </div>
+                            <img class="img-fluid ttm-equal-height-image" src="{% static 'images/services/construction-process.jpg' %}" alt="Construction Process">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="ttm-bg ttm-col-bgcolor-yes ttm-bgcolor-white ttm-bg ttm-right-span padding_left45 res-991-padding_left0 padding_top35">
+                                <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
+                                    <div class="ttm-col-wrapper-bg-layer-inner"></div>
+                                </div>
+                                <div class="layer-content">
+                                    <!-- section title -->
+                                    <div class="section-title mb-4">
+                                        <div class="title-header">
+                                            <h3>OUR APPROACH</h3>
+                                            <h2 class="title">The Right Construction Process</h2>
+                                        </div>
+                                        <div class="title-desc">
+                                            <p>We implement a proven methodology to ensure quality results for every project.</p>
+                                        </div>
+                                    </div><!-- section title end -->
+                                    <div class="row g-0 padding_top30 padding_right50 res-575-padding_right15 padding_bottom30 padding_left50 res-575-padding_left15 res-991-margin_left0 ml_300 mb_70 res-991-margin_bottom0 ttm-bgcolor-grey">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="featured-icon-box style5 icon-align-before-content padding_top10 padding_right30 margin_right15 res-320-padding_right0 res-320-margin_right0">
+                                                        <div class="featured-icon">
+                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                                                <i class="flaticon flaticon-blueprint"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="featured-content">
+                                                            <div class="featured-title">
+                                                                <h3>Design & Planning</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>Collaborative design process using cutting-edge technology</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="featured-icon-box style5 icon-align-before-content padding_top10 padding_right20 res-320-padding_right0">
+                                                        <div class="featured-icon">
+                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                                                <i class="flaticon flaticon-excavator"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="featured-content">
+                                                            <div class="featured-title">
+                                                                <h3>Site Preparation</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>Comprehensive site clearing, grading, and permitting</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="featured-icon-box style5 icon-align-before-content padding_top10 padding_right30 margin_right15 res-320-padding_right0 res-320-margin_right0">
+                                                        <div class="featured-icon">
+                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                                                <i class="flaticon flaticon-construction"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="featured-content">
+                                                            <div class="featured-title">
+                                                                <h3>Construction</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>Quality construction with superior materials and methods</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="featured-icon-box style5 icon-align-before-content padding_top10 padding_right20 res-320-padding_right0">
+                                                        <div class="featured-icon">
+                                                            <div class="ttm-icon ttm-icon_element-onlytxt ttm-icon_element-color-skincolor ttm-icon_element-size-lg">
+                                                                <i class="flaticon flaticon-paint-roller"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="featured-content">
+                                                            <div class="featured-title">
+                                                                <h3>Finishing</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>Attention to detail in all finishing work and inspections</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Our Approach-section-end-->
+
+    <!--Why Choose Us-section-->
+    <section class="ttm-row choose-section ttm-bgimage-yes bg-img9 ttm-bg ttm-bgcolor-darkgrey mt_100 res-991-margin_top_0 clearfix">
+        <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <!--section-title -->
+                    <div class="section-title style3 text-center">
+                        <h4 class="title border-rad_5 font-weight-600 fs-14 p-10">WHY CHOOSE US</h4>
+                        <h2 class="title">Why Nextalin Stands Out in Kenya's Construction Industry</h2>
+                    </div>
+                    <!--section-title-end -->
+                    <div class="margin_top30">
+                        <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-white margin_right30" href="{% url 'about' %}">Our Values</a>
+                        <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-skincolor" href="{% url 'contact' %}">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Why Choose Us-section-end-->
+
+  
+</div>
+<!--site-main end-->
+{% endblock %}
