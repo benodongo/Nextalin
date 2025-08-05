@@ -114,7 +114,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="ttm-bgcolor-white p-40 res-991-margin_right0">
-                        <form id="contact_form" class="wrap-form contact_form padding_top15" method="post" action="{% url 'contact' %}">
+                       <form id="contact_form" class="wrap-form contact_form padding_top15" method="post" action="{% url 'contact' %}">
                             {% csrf_token %}
                             
                             {% if form.errors %}
@@ -142,6 +142,7 @@
                                 <div class="col-sm-6 ttm-box-col-wrapper">
                                     <label>
                                         <span class="text-input margin_bottom0">
+                                            {{ form.name.label_tag }}
                                             {{ form.name }}
                                             {% if form.name.errors %}
                                                 <span class="text-danger">{{ form.name.errors }}</span>
@@ -152,6 +153,7 @@
                                 <div class="col-sm-6 ttm-box-col-wrapper">
                                     <label>
                                         <span class="text-input margin_bottom0">
+                                            {{ form.phone.label_tag }}
                                             {{ form.phone }}
                                             {% if form.phone.errors %}
                                                 <span class="text-danger">{{ form.phone.errors }}</span>
@@ -162,6 +164,7 @@
                                 <div class="col-sm-6 ttm-box-col-wrapper">
                                     <label>
                                         <span class="text-input margin_bottom0">
+                                            {{ form.email.label_tag }}
                                             {{ form.email }}
                                             {% if form.email.errors %}
                                                 <span class="text-danger">{{ form.email.errors }}</span>
@@ -172,6 +175,7 @@
                                 <div class="col-sm-6 ttm-box-col-wrapper">
                                     <label>
                                         <span class="text-input margin_bottom0">
+                                            {{ form.subject.label_tag }}
                                             {{ form.subject }}
                                             {% if form.subject.errors %}
                                                 <span class="text-danger">{{ form.subject.errors }}</span>
@@ -182,6 +186,7 @@
                                 <div class="col-sm-12 ttm-box-col-wrapper">
                                     <label>
                                         <span class="text-input margin_bottom0">
+                                            {{ form.message.label_tag }}
                                             {{ form.message }}
                                             {% if form.message.errors %}
                                                 <span class="text-danger">{{ form.message.errors }}</span>
@@ -196,6 +201,7 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
                 <div class="col-lg-4">
