@@ -63,6 +63,29 @@
     .featured-desc {
         margin-bottom: 15px;
     }
+    .fixed-service-img {
+    height: 250px; 
+    width: 100%;
+    object-fit: cover; 
+    border-radius: 8px;
+    }
+    /* Ensure equal height for all slider items */
+    .slick_slider .col-12 {
+        display: flex;
+    }
+
+    /* Make all featured-icon-boxes equal height */
+    .featured-icon-box {
+        height: 100%;
+    }
+
+    /* Limit title height to one line and truncate overflow */
+    .featured-title h3 {
+        white-space: nowrap; /* Prevent wrapping */
+        overflow: hidden;    /* Hide overflow text */
+        text-overflow: ellipsis; /* Add "..." for long text */
+        font-size: 18px; /* Adjust if needed */
+    }
 </style>
 
 </head>
@@ -131,7 +154,7 @@
                                         <!-- site-branding -->
                                         <div class="site-branding">
                                             <a class="home-link" href="{% url 'home' %}" title="Nextalin" rel="home">
-                                                <img id="logo-img" class="img-fluid auto_size" src="{% static 'images/next-no_bg.png' %}" alt="Nextalin logo">
+                                                <img id="logo-img" class="img-fluid auto_size" src="{% static 'images/logo_main.png' %}" alt="Nextalin logo">
                                             </a>
                                         </div><!-- site-branding end -->
                                         
@@ -224,7 +247,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="ttm-bgcolor-skincolor p-32">
-                                <img class="img-fluid auto_size" src="{% static 'images/next-no_bg.png' %}" alt="Nextalin logo">
+                                <img class="img-fluid auto_size" src="{% static 'images/fotter_logo.png' %}" alt="Nextalin logo">
                             </div>
                         </div>
                     </div>
