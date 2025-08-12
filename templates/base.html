@@ -34,6 +34,10 @@
         border-radius: 8px;
         overflow: hidden;
     }
+    /* Ensure all parents have height 100% up the chain */
+    html, body, section.ttm-row, .container, .container > .row {
+        height: 100%;
+    }
 
     /* Make thumbnail images uniform */
     .featured-thumbnail img {
