@@ -33,34 +33,34 @@
                 <div class="container">
                     <!-- row -->
                     <div class="row">
-                        {% for project in projects %}
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <!-- featured-imagebox-portfolio -->
-                            <div class="featured-imagebox featured-imagebox-portfolio style1">
-                                <!-- ttm-box-view-overlay -->
-                                <div class="ttm-box-view-overlay ttm-portfolio-box-view-overlay">
-                                    <!-- featured-thumbnail -->
-                                    <div class="featured-thumbnail">
-                                        <a href="{{ project.get_absolute_url }}"> 
-                                            <img class="img-fluid" src="{{ project.image.url }}" alt="{{ project.title }}">
-                                        </a>
-                                    </div><!-- featured-thumbnail end-->
-                                    <div class="ttm-media-link">
-                                        <a href="{{ project.get_absolute_url }}" class="ttm_link"><i class="fas fa-plus"></i></a>
-                                    </div>
-                                </div><!-- ttm-box-view-overlay end-->
-                                <div class="featured-content featured-content-portfolio">
-                                    <div class="featured-title">
-                                        <h3><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h3>
-                                    </div>
-                                    <span class="category">
-                                        <span>{{ project.service_type }}</span>
-                                    </span>
+                    {% for project in projects %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <!-- featured-imagebox-portfolio -->
+                        <div class="featured-imagebox featured-imagebox-portfolio style1">
+                            <!-- ttm-box-view-overlay -->
+                            <div class="ttm-box-view-overlay ttm-portfolio-box-view-overlay">
+                                <!-- featured-thumbnail -->
+                                <div class="featured-thumbnail">
+                                    <a href="{{ project.get_absolute_url }}"> 
+                                        <img class="img-fluid" src="{{ project.image.url }}" alt="{{ project.title }}">
+                                    </a>
+                                </div><!-- featured-thumbnail end-->
+                                <div class="ttm-media-link">
+                                    <a href="{{ project.get_absolute_url }}" class="ttm_link"><i class="fas fa-plus"></i></a>
                                 </div>
-                            </div><!-- featured-imagebox-portfolio -->
-                        </div>
-                        {% endfor %}
-                    </div><!-- row end -->
+                            </div><!-- ttm-box-view-overlay end-->
+                            <div class="featured-content featured-content-portfolio">
+                                <div class="featured-title">
+                                    <h3><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h3>
+                                </div>
+                                <span class="category">
+                                    <span>{{ project.service_type }}</span>
+                                </span>
+                            </div>
+                        </div><!-- featured-imagebox-portfolio -->
+                    </div>
+                    {% endfor %}
+                </div><!-- row end -->
                 </div>
             </div>
             <!--grid-section end-->

@@ -2,5 +2,230 @@
 {% load static %}
 
 {% block content %}
+<!-- page-title -->
+<div class="ttm-page-title-row ttm-bg ttm-bgimage-yes ttm-bgcolor-dark clearfix">
+    <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="ttm-page-title-row-inner">
+                    <div class="page-title-heading">
+                        <h2 class="title">Career Opportunities</h2>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="{% url 'home' %}">
+                                <i class="themifyicon ti-home"></i> &nbsp;
+                                Home</a>
+                        </span>
+                        <span>Careers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-title end -->
+
+<!--site-main start-->
+<div class="site-main">
+    <section class="ttm-row careers-section clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 mx-auto">
+                    <div class="section-title text-center">
+                        <div class="title-header">
+                            <h2 class="title">Join Our Team</h2>
+                        </div>
+                        <div class="title-desc">
+                            <p>We're always looking for talented individuals to join our growing team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Job Listings -->
+            <div class="row">
+                {% for job in jobs %}
+                <div class="col-lg-12">
+                    <div class="featured-job-box mb-30">
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>{{ job.title }}</h3>
+                                <span class="posted-date">Posted: {{ job.posted_date|date:"F j, Y" }}</span>
+                            </div>
+                            <div class="featured-desc">
+                                <h4>Job Description</h4>
+                                <p>{{ job.description }}</p>
+                                
+                                <h4>Requirements</h4>
+                                <p>{{ job.requirements }}</p>
+                            </div>
+                            <div class="job-meta">
+                                <span class="job-type"><i class="fas fa-time"></i>Full Time</span>
+                                <span class="job-location"><i class="fas fa-location-pin"></i>Your Location</span>
+                            </div>
+                            <div class="apply-btn text-right">
+                                <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-skincolor" 
+                                   href="#apply-now" 
+                                   data-job-title="{{ job.title }}">
+                                    Apply Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-lg-12">
+                    <div class="no-jobs text-center">
+                        <p>There are currently no open positions. Please check back later.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Application Form (initially hidden) -->
+            <div class="row margin_top60" id="apply-now" style="display: none;">
+                <div class="col-lg-12">
+                    <div class="ttm-pf-single-content-wrapper">
+                        <div class="ttm-pf-single-content-wrapper-innerbox">
+                            <h2>Apply for <span id="job-title-display"></span></h2>
+                            <form id="job-application-form" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="job_title" id="job-title-input">
+                                
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Full Name *</label>
+                                            <input type="text" class="form-control" id="name" name="name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="email">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" name="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="resume">Upload Resume (PDF) *</label>
+                                            <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="cover_letter">Cover Letter</label>
+                                            <textarea class="form-control" id="cover_letter" name="cover_letter" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-skincolor">
+                                            Submit Application
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!--site-main end-->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle Apply Now button clicks
+    document.querySelectorAll('.apply-btn a').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const jobTitle = this.getAttribute('data-job-title');
+            
+            // Set the job title in the form
+            document.getElementById('job-title-display').textContent = jobTitle;
+            document.getElementById('job-title-input').value = jobTitle;
+            
+            // Show the application form
+            document.getElementById('apply-now').style.display = 'block';
+            
+            // Scroll to the form
+            document.getElementById('apply-now').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+</script>
+
+<style>
+.featured-job-box {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.featured-job-box:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.featured-title h3 {
+    color: #2b2b2b;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.posted-date {
+    color: #7a7a7a;
+    font-size: 14px;
+}
+
+.featured-desc h4 {
+    color: #2b2b2b;
+    font-size: 18px;
+    margin: 20px 0 10px;
+}
+
+.job-meta {
+    margin: 20px 0;
+}
+
+.job-meta span {
+    margin-right: 15px;
+    color: #7a7a7a;
+}
+
+.job-meta i {
+    margin-right: 5px;
+}
+
+.no-jobs {
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.apply-btn {
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .featured-job-box {
+        padding: 20px;
+    }
+}
+</style>
 
 {% endblock %}

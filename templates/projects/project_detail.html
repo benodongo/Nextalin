@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- page-title -->
+<div class="ttm-page-title-row ttm-bg ttm-bgimage-yes ttm-bgcolor-dark clearfix">
+    <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="ttm-page-title-row-inner">
+                    <div class="page-title-heading">
+                        <h2 class="title">{{ project.title }}</h2>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="{% url 'home' %}">
+                                <i class="themifyicon ti-home"></i> &nbsp;
+                                Home</a>
+                        </span>
+                        <span>{{ project.title }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-title end -->
+
+<!--site-main start-->
+<div class="site-main">
+    <!-- Project-style-section -->
+    <section class="ttm-row project-single-section clearfix">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ttm-pf-single-content-wrapper">
+                        <div class="ttm-pf-single-content-wrapper-innerbox">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6 col-sm-12 ">
+                                            <div class="featured-icon-box style10 without-icon">
+                                                <div class="featured-content">
+                                                    <div class="featured-title">
+                                                        <h5 class="mb-0 fs-17">Project Type</h5>
+                                                    </div>
+                                                    <div class="featured-desc">
+                                                        <p>{{ project.project_type }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-12">
+                                            <div class="featured-icon-box style10 without-icon">
+                                                <div class="featured-content">
+                                                    <div class="featured-title">
+                                                        <h5 class="mb-0 fs-17">Clients</h5>
+                                                    </div>
+                                                    <div class="featured-desc">
+                                                        <p>{{ project.client }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-12 ">
+                                            <div class="featured-icon-box style10 without-icon">
+                                                <div class="featured-content">
+                                                    <div class="featured-title">
+                                                        <h5 class="mb-0 fs-17">Service Type</h5>
+                                                    </div>
+                                                    <div class="featured-desc">
+                                                        <p>{{ project.service_type }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-12">
+                                            <div class="featured-icon-box style10 without-icon">
+                                                <div class="featured-content">
+                                                    <div class="featured-title">
+                                                        <h5 class="mb-0 fs-17">Completion</h5>
+                                                    </div>
+                                                    <div class="featured-desc">
+                                                        <p>{{ project.date_completed|date:"F jS, Y" }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="margin_bottom50 margin_top50 portfolio-single text-center position-relative">
+                                            <ul class="social-icons list-inline">
+                                                <li><a class="tooltip-top" href="https://www.facebook.com/themetechMount18" rel="noopener" aria-label="facebook">
+                                                        <i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a class="tooltip-top" href="https://www.instagram.com/theme_tech_mount/" rel="noopener" aria-label="instagram">
+                                                        <i class="fab fa-instagram"></i></a></li>
+                                                <li><a class="tooltip-top" href="https://www.linkedin.com/company/themetech-mount/" rel="noopener" aria-label="linkedin">
+                                                       <i class="fab fa-linkedin-in"></i></a></li>
+                                                <li><a class="tooltip-top" href="https://in.pinterest.com/themetechmount/_created/https://in.pinterest.com/themetechmount/_created/" rel="noopener" aria-label="pinterest">
+                                                       <i class="fab fa-pinterest-p"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12">
+                                        <!-- ttm_pf_image-wrapper -->
+                                        <div class="ttm_pf_image-wrapper">
+                                            <img class="img-fluid" src="{{ project.image.url }}" alt="{{ project.title }}">
+                                        </div><!-- ttm_pf_image-wrapper end -->
+                                    </div>
+                                </div>
+                                <div class="ttm-pf-single-content-area">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="margin_top40">
+                                                <h2>Project Details</h2>
+                                                <p>{{ project.detail_description|linebreaks }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Additional images section -->
+                                    <div class="row">
+                                        {% for image in project_images %}
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="ttm_single_image-wrapper text-left padding_top15">
+                                                <img class="img-fluid" src="{{ image.image.url }}" alt="{{ image.caption|default:project.title }}">
+                                                {% if image.caption %}
+                                                <p class="text-center">{{ image.caption }}</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% if project.best_idea_title %}
+                                    <div class="margin_top40">
+                                        <h2>{{ project.best_idea_title }}</h2>
+                                        <p>{{ project.best_idea_description|linebreaks }}</p>
+                                    </div>
+                                    {% endif %}
+                                    <div class="row margin_top40">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-12">
+                                                    <div class="featured-icon-box icon-align-top-content style6">
+                                                        <div class="featured-icon text-center">
+                                                            <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-skincolor ttm-icon_element-size-xl ttm-icon_element-style-square">
+                                                                <i class="flaticon flaticon-blueprint"></i>
+                                                            </div>
+                                                            <div class="number"></div>
+                                                        </div>
+                                                        <div class="featured-content text-center">
+                                                            <div class="featured-title">
+                                                                <h3 class="margin_bottom10">The Preparation & Brief</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>This is the helpful in establishing milestone for submission of a progress report</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12">
+                                                    <div class="featured-icon-box icon-align-top-content style6">
+                                                        <div class="featured-icon text-center">
+                                                            <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-skincolor ttm-icon_element-size-xl ttm-icon_element-style-square">
+                                                                <i class="flaticon flaticon-construction-machine"></i>
+                                                            </div>
+                                                            <div class="number"></div>
+                                                        </div>
+                                                        <div class="featured-content text-center">
+                                                            <div class="featured-title">
+                                                                <h3 class="margin_bottom10">The Conceptual Design</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>The scheme develops the concept, taking a board more functional and practical</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12">
+                                                    <div class="featured-icon-box icon-align-top-content style6">
+                                                        <div class="featured-icon text-center">
+                                                            <div class="ttm-icon ttm-icon_element-fill ttm-icon_element-color-skincolor ttm-icon_element-size-xl ttm-icon_element-style-square">
+                                                                <i class="flaticon flaticon-building"></i>
+                                                            </div>
+                                                            <div class="number"></div>
+                                                        </div>
+                                                        <div class="featured-content text-center">
+                                                            <div class="featured-title">
+                                                                <h3 class="margin_bottom10">Fully Technical Designs</h3>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>Increasingly, however, technical designs may continue through preparation production</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ttm-horizontal_sep width-100 margin_top30 margin_bottom30"></div>
+                                    <div class="d-flex justify-content-between">
+                                        <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-darkgrey" href="#">Previous</a>
+                                        <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-darkgrey" href="#">Next</a>
+                                    </div>
+                                </div>
+                                <div class="ttm-pf-single-related-wrapper margin_top50 mb_15">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2>Related Work</h2>
+                                        </div>
+                                        <!-- You can add related projects here -->
+                                        {% for related_project in related_projects %}
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="featured-imagebox featured-imagebox-portfolio style1">
+                                                <div class="ttm-box-view-overlay ttm-portfolio-box-view-overlay">
+                                                    <div class="featured-thumbnail">
+                                                        <a href="{% url 'project_detail' pk=related_project.pk %}"> 
+                                                            <img class="img-fluid" src="{{ related_project.image.url }}" alt="{{ related_project.title }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="ttm-media-link">
+                                                        <a href="{% url 'project_detail' pk=related_project.pk %}" class="ttm_link"><i class="ti ti-plus"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="featured-content featured-content-portfolio">
+                                                    <div class="featured-title">
+                                                        <h3><a href="{% url 'project_detail' pk=related_project.pk %}">{{ related_project.title }}</a></h3>
+                                                    </div>
+                                                    <span class="category">
+                                                        <span>{{ related_project.service_type }}</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div><!-- row end-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Project-style-section-end-->
+</div>
+<!--site-main end-->
+
+{% endblock %}
