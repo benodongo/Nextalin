@@ -7,10 +7,8 @@ def services(request):
 
 def service_detail(request,pk):
 
-    portfolio_item = get_object_or_404(Service, pk=pk)
-    projects = Service.objects.all().order_by('-id')[:2]
+    service = get_object_or_404(Service, pk=pk)
     context = {
-        'portfolio_item': portfolio_item,
-        'projects': projects
+        'service': service
     }
-    return render(request, 'service_details.html',context)
+    return render(request, 'services/service_detail.html',context)

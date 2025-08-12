@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- page-title -->
+<div class="ttm-page-title-row ttm-bg ttm-bgimage-yes ttm-bgcolor-dark clearfix">
+    <div class="ttm-row-wrapper-bg-layer ttm-bg-layer"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="ttm-page-title-row-inner">
+                    <div class="page-title-heading">
+                        <h2 class="title">{{ service.name }}</h2>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="{% url 'home' %}">
+                                <i class="themifyicon ti-home"></i> &nbsp;
+                                Home</a>
+                        </span>
+                        <span>{{ service.name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-title end -->
+ <!--site-main start-->
+<div class="site-main">
+    <!-- Project-style-section -->
+    <section class="ttm-row project-single-section clearfix">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ttm-pf-single-content-wrapper">
+                        <div class="ttm-pf-single-content-wrapper-innerbox">
+                            <div class="row">
+                                <div class="col-lg-12">
+                              
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12">
+                                        <!-- ttm_pf_image-wrapper -->
+                                        <div class="ttm_pf_image-wrapper">
+                                            <img class="img-fluid" src="{{ service.image.url }}" alt="{{ project.title }}">
+                                        </div><!-- ttm_pf_image-wrapper end -->
+                                    </div>
+                                </div>
+                                <div class="ttm-pf-single-content-area">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="margin_top40">
+                                                <h2></h2>
+                                                <p>{{ service.description|linebreaks }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                   
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Project-style-section-end-->
+</div>
+<!--site-main end-->
+{% endblock %}
